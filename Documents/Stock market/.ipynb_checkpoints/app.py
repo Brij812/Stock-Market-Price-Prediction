@@ -23,3 +23,9 @@ tickerDf = tickerData.history(period='1d', start='2010-01-01', end='2019-12-31')
 
 st.subheader('Data from 2010-2019')
 st.write(tickerDf.describe())
+
+#Visualization
+st.subheader('Closing Price vs Time Chart')
+fig = plt.figure(figsize=(12,6))
+plt.plot(tickerDf.Close)
+st.pyplot(fig)

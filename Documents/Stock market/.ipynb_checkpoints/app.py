@@ -8,8 +8,12 @@ import streamlit as st
 
 import yfinance as yf
 
+st.title('Stock Trend Prediction')
+
+user_input = st.text_input('Enter Sock Ticker')
+
 # Define the ticker symbol
-tickerSymbol = 'AAPL'
+tickerSymbol = user_input
 
 # Get data on this ticker
 tickerData = yf.Ticker(tickerSymbol)
@@ -17,7 +21,5 @@ tickerData = yf.Ticker(tickerSymbol)
 # Get historical prices for this ticker
 tickerDf = tickerData.history(period='1d', start='2010-01-01', end='2019-12-31')
 
-
-
-# Display the first few rows
-print(tickerDf.head())
+st.subheader('Data from 2010-2019')
+st.write(tickerDf.describe())
